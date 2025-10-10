@@ -1,0 +1,10 @@
+p {
+    background: pink;
+    color: purple; 
+    padding-top: 20px;
+    margin: 50px;
+}
+
+#mykitten {
+    width: 200px;
+}

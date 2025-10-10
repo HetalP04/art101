@@ -1,0 +1,61 @@
+:root{
+  --bg: #eccaf1;
+  --ink: #5d296c;
+  --text: #310438;
+  --card: #ffffff;
+  --space: 25px;
+  --maxw: 850px;
+}
+
+body{
+  background: var(--bg);
+  padding: 50px;
+  color: var(--text);
+  font: 16px/1.6 Arial, sans-serif;
+}
+
+.page{
+  max-width: var(--maxw);
+  margin: 0 auto;
+}
+
+h1, h2, h3{
+  color: var(--ink);
+  margin: 0 0 0.5em;
+}
+
+h1{ font-size: 2.2rem; letter-spacing: -0.02em; }
+h2{ font-size: 1.5rem; margin-top: 0; }
+h3{ font-size: 1.25rem; }
+
+.card{
+  background: var(--card);
+  padding: calc(var(--space) * 1.2);
+  margin: calc(var(--space) * 1.2) 0;
+}
+
+
+.mypic{
+  max-width: 220px;
+}
+
+.figure{
+  margin: 0;
+}
+
+.todo{
+  padding-left: 1.2em;
+}
+.todo li{
+  margin: 0.25em 0;
+}
+
+.site-footer{
+  text-align: center;
+  margin-top: calc(var(--space) * 1.5);
+  color: #513558;
+}
+
+@media (max-width: 640px){
+  body{ padding: 24px; }
+}
