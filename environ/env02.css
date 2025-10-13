@@ -1,0 +1,25 @@
+p{
+  display: block;
+  font-size: 1.5rem;
+  line-height: 1;
+  background: #f9ee7a;
+  color: #0c0c0c;
+  padding: 5px 10px;
+}
+
+.stage{
+  min-height: calc(100vh - 65px);
+  display:flex;
+  flex-direction:column;
+  justify-content:space-between;
+}
+
+.sky{
+  display:flex;
+  justify-content:space-between;
+  align-items:flex-start;
+  padding:5px 15px;
+}
+.cloud{ width: clamp(200px, 18vw, 220px); user-select:none; }
+#cloud1{ transform: translateY(5px); }
+#cloud2{ transform: translateY(25px); }
