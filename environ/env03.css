@@ -1,0 +1,66 @@
+p{
+  display: block;
+  font-size: 1.5rem;
+  line-height: 1;
+  background: #f9ee7a;
+  color: #0c0c0c;
+  padding: 5px 10px;
+}
+
+.stage{
+  min-height: calc(100vh - 65px);
+  display:flex;
+  flex-direction:column;
+  justify-content:space-between;
+}
+
+.sky{
+  display:flex;
+  justify-content:space-between;
+  align-items:flex-start;
+  padding:5px 15px;
+}
+
+.cloud{ 
+  width: clamp(200px, 18vw, 220px); 
+  user-select:none; 
+}
+#cloud1{ transform: translateY(5px); }
+#cloud2{ transform: translateY(25px); }
+
+#output{
+  margin: 12px 10px;
+  padding: 10px 12px;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  background: #fafafa;
+  font-size: 1rem;
+  line-height: 1.4;
+}
+
+#output, #output2, #output3, #output4{
+  margin: 12px 10px;
+  padding: 12px 14px;
+  border: 1px solid #ddd;
+  border-radius: 12px;
+  background: rgba(250,250,250,.92);
+  max-width: 760px;
+  font-size: 1rem;
+  line-height: 1.45;
+}
+.panel { border-radius: 12px; padding: 10px 12px; margin: 8px 0; }
+.panel.yellow { background:#fff4a3; }
+.panel.green  { background:#dff7dc; }
+.panel.purple { background:#eadcff; }
+.panel.pink   { background:#ffe1f1; }
+.panel h3 { margin: 0 0 6px 0; font-size: 1.05rem; }
+
+body {
+  background-image: url("img/Kirby.webp");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center top;
+  background-attachment: fixed;
+}
+
+
