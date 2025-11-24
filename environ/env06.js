@@ -7,19 +7,15 @@ const characterA = {
 let lastEnv = { mode: "day", mood: "sleepy", wind: 1 };
 
 function changeEnvironment(mode, mood, wind) {
-  if (mode === "night") {
-    $("body").removeClass("day").addClass("night");
-    $("#output").html(
-      "<strong>Mode:</strong> Night<br>" +
-      characterA.name + " says: " + characterA.nightPhrase
-    );
-  } else {
-    $("body").removeClass("night").addClass("day");
-    $("#output").html(
-      "<strong>Mode:</strong> Day<br>" +
-      characterA.name + " says: " + characterA.dayPhrase
-    );
-  }
+  $("body").removeClass("day night").addClass(mode);
+
+  const phrase =
+    mode === "night" ? characterA.nightPhrase : characterA.dayPhrase;
+
+  $("#output").html(
+    `<strong>Mode:</strong> ${mode.charAt(0).toUpperCase() + mode.slice(1)}<br>
+    ${characterA.name} says: ${phrase}`
+  );
 
   if (mood === "sleepy" && mode === "day") {
     $("#output").append("<br>Feeling sleepy even though it’s daytime.");
@@ -27,13 +23,20 @@ function changeEnvironment(mode, mood, wind) {
     $("#output").append("<br>Too excited to sleep under the blue moon!");
   }
 
-  const dx = Math.min(Math.max(wind, 0), 20) * 10;
+  function clamp(value, min, max) {
+  return Math.min(Math.max(value, min), max);
+  }
 
-  const scale1 = $("#cloud1").hasClass("is-big") ? 1.35 : 1;
-  const scale2 = $("#cloud2").hasClass("is-big") ? 1.35 : 1;
+  const dx = clamp(wind, 0, 20) * 10;
 
-  $("#cloud1").css("transform", "translate(" + dx + "px, 5px) scale(" + scale1 + ")");
-  $("#cloud2").css("transform", "translate(" + (-dx) + "px, 25px) scale(" + scale2 + ")");
+  function applyCloudTransform(id, x, y) {
+    const el = $(id);
+    const scale = el.hasClass("is-big") ? 1.35 : 1;
+    el.css("transform", `translate(${x}px, ${y}px) scale(${scale})`);
+  }
+
+  applyCloudTransform("#cloud1", dx, 5);
+  applyCloudTransform("#cloud2", -dx, 25);
 
   $("#output2").html(
     "<strong>Mood:</strong> " + mood +
@@ -58,9 +61,7 @@ $(document).on("click", ".cloud", function () {
 
 
 $(document).on("keydown", function (event) {
-  let mode = lastEnv.mode;
-  let mood = lastEnv.mood;
-  let wind = lastEnv.wind;
+  let { mode, mood, wind } = lastEnv;
 
   if (event.key === "ArrowRight") {
     wind = Math.min(wind + 1, 20);
